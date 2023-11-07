@@ -16,7 +16,6 @@
  * @package WordPress
  */
 
-ignore_user_abort( true );
 
 if ( ! headers_sent() ) {
 	header( 'Expires: Wed, 11 Jan 1984 05:00:00 GMT' );
