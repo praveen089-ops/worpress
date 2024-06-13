@@ -1,0 +1,44 @@
+# Ignore Bash history
+.bash_history
+
+# Ignore Bash configuration file
+.bashrc 
+
+# Ignore Git configuration file
+.gitconfig
+
+# Ignore Vim swap files
+*.swp
+
+# Ignore Apache server configuration
+.htaccess
+
+# Ignore less command history
+.lesshst
+
+# Ignore local user-specific configuration
+.local/
+
+# Ignore SSH keys and configuration
+.ssh/
+
+# Ignore adminer.php (database management tool)
+adminer.php
+
+# Ignore SQL dumps
+*.sql
+
+# Ignore ZIP archives
+*.zip
+
+# Ignore tar.gz archives
+*.tar.gz
+
+# Ignore WordPress configuration
+wp-config.php
+
+# Ignore phpMyAdmin (database management tool)
+phpmyadmin/
+
+info.php
+.viminfo
