@@ -13,10 +13,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Copy via SCP
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-
       - name: Set up SSH
         run: |
           mkdir -p ~/.ssh
@@ -24,6 +20,10 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.YOUR_SERVER_IP }} >> ~/.ssh/known_hosts
 
-      - name: Deploy WordPress
+      - name: Copy via SCP
         run: |
           scp -o StrictHostKeyChecking=no -r . ${{ secrets.YOUR_SSH_USER }}@${{ secrets.YOUR_SERVER_IP }}:/var/www/dev.cpcloud.in/public_html
+
+      - name: Deploy WordPress
+        run: |
+          # Add any additional deployment steps here
