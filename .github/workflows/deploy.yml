@@ -1,4 +1,4 @@
-name: DEV Cpcloud Deployment
+name: WordPress Deployment
 
 on:
   push:
@@ -14,19 +14,17 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          ssh-known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.YOUR_SERVER_IP }} >> ~/.ssh/known_hosts
 
       - name: Deploy WordPress
         run: |
-          # Ensure you are in the correct directory
-          cd /var/www/dev.cpcloud.in/public_html
-
-          # Copy files to the server
           scp -o StrictHostKeyChecking=no -r . ${{ secrets.YOUR_SSH_USER }}@${{ secrets.YOUR_SERVER_IP }}:/var/www/dev.cpcloud.in/public_html
-
-          # Any additional commands to finalize the deployment
-          # For example, running database migrations or flushing caches
-          #ssh -o StrictHostKeyChecking=no ${{ secrets.YOUR_SSH_USER }}@${{ secrets.YOUR_SERVER_IP }} 'cd /var/www/dev.cpcloud.in/public_html && wp core update-db && wp cache flush'
+          #ssh -o StrictHostKeyChecking=no ${{ secrets.YOUR_SSH_USER }}@${{ secrets.YOUR_SERVER_IP }} << 'EOF'
+            #cd /path/to/wordpress
+            #wp core update-db
+            #wp cache flush
+          #EOF
