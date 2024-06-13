@@ -23,8 +23,3 @@ jobs:
       - name: Deploy WordPress
         run: |
           scp -o StrictHostKeyChecking=no -r . ${{ secrets.YOUR_SSH_USER }}@${{ secrets.YOUR_SERVER_IP }}:/var/www/dev.cpcloud.in/public_html
-          #ssh -o StrictHostKeyChecking=no ${{ secrets.YOUR_SSH_USER }}@${{ secrets.YOUR_SERVER_IP }} << 'EOF'
-            #cd /path/to/wordpress
-            #wp core update-db
-            #wp cache flush
-          #EOF
