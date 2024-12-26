@@ -1,4 +1,5 @@
-.ssh/
+.gitconfig
+.ssh 
 .lesshst
 .bash_history
 .bash_logout
@@ -8,7 +9,7 @@
 .htaccess.bk
 .profile
 adminer.php
-phpmyadmin/
+phpmyadmin
 index.html-old
 info.php
 *.zip 
