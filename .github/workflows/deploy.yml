@@ -18,7 +18,7 @@ jobs:
       uses: actions/checkout@v4
     
     - name: Deploy to Development
-      uses: easingthemes/ssh-deploy@v5.1.0
+      uses: appleboy/ssh-action@v1.0.3
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
