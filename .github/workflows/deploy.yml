@@ -18,10 +18,10 @@ jobs:
       uses: actions/checkout@v4
     
     - name: Deploy to Development
-      uses: appleboy/ssh-action@v1.0.3
+      uses: easingthemes/ssh-deploy@v5.1.0
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
+        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+        REMOTE_USER: ${{ secrets.REMOTE_USER }}
+        REMOTE_PASSWORD: ${{ secrets.REMOTE_PASSWORD }}
+        REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
         script: cd /var/www/dev.cpcloud.in/public_html && git pull origin dev_cpcloud
