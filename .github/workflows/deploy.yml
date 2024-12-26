@@ -1,0 +1,27 @@
+name: CI/CD - Deploy to Development
+  
+on: 
+  push:
+    branches: 
+      - dev_cpcloud     # Trigger on push to dev_cpcloud
+  pull_request:
+    branches:
+      - dev_cpcloud     # Trigger on PR against dev_cpcloud
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+    
+    - name: Deploy to Development
+      uses: easingthemes/ssh-deploy@v5.1.0
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: cd /var/www/dev.cpcloud.in/public_html && git pull origin dev_cpcloud
