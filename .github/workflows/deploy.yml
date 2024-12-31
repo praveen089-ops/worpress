@@ -22,6 +22,6 @@ jobs:
       with:
         REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
         REMOTE_USER: ${{ secrets.REMOTE_USER }}
-        PASSWORD: ${{ secrets.PASSWORD }}
+        KEY: ${{ secrets.KEY }}
         REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
         script: cd /var/www/dev.cpcloud.in/public_html && git pull origin dev_cpcloud
